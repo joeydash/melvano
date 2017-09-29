@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
 <%- include header.ejs %>
-  <body>
-  <div style="text-align: center;" class="container-fluid">
-    <img src="/img/melvano.png" style="width: 256px;height: 256px;" class="animated bounceInDown">
-    <p style="font-size: 40px; font-family: 'Sue Ellen Francisco', cursive;" class="animated bounceInUp"><%= tagline %></p>
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+      <div style="text-align: center;">
+      <img src="/img/melvano.png" style="width: 256px;height: 256px;" class="animated bounceInDown">
+      <p style="font-size: 40px; font-family: 'Sue Ellen Francisco', cursive;" class="animated bounceInUp"><%= tagline %></p>
+      </div>
+    </div>
   </div>
-  </body>
+</div>
+</body>
 </html>

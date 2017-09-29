@@ -7,3 +7,7 @@ body {
   padding: 50px;
   font-family: 'Open Sans Condensed', sans-serif;
 }
+.container-fluid {
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}

@@ -1,0 +1,9 @@
+/*#################Fonts import##############*/
+@import url('https://fonts.googleapis.com/css?family=Patrick+Hand+SC|Sue+Ellen+Francisco');
+
+
+
+body {
+  padding: 50px;
+  font-family: 'Open Sans Condensed', sans-serif;
+}

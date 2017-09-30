@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-/*var managedb = require('./routes/managedb');*/
+var managedb = require('./routes/managedb');
 
 var app = express();
 
@@ -25,11 +25,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('^\/users/', users);
-/*app.use('/managedb', managedb);*/
+app.use('/managedb', managedb);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  var err = new Error('Page Not Found');
   err.status = 404;
   next(err);
 });

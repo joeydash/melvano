@@ -4,7 +4,7 @@ var mongo = require('mongodb');
 var assert = require('assert');
 
 
-var url = "mongodb://localhost:27017/test";
+var url = "mongodb://joeydash:joeydash@ds155674.mlab.com:55674/joeydash";
 
 /* GET home page. */
 router.post('/check', function(req, res, next) {
@@ -17,17 +17,22 @@ router.post('/update', function(req, res, next) {
 });
 router.post('/insert', function(req, res, next) {
     var item = {
-        name: "joeydash"
-    }
+        username: req.body.username,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        password:req.body.password,
+        time: new Date(),
+    };
     mongo.connect(url,function (err,db) {
         assert.equal(null,err);
-        db.collection('user_data').insertOne(item,function (error,result) {
+        db.collection('user-data').insertOne(item,function (error,result) {
             assert.equal(null,error);
             console.log("item inserted!");
         });
     });
-
-    res.render('index',context );
+});
+router.get('/', function(req, res, next) {
+    res.send('managedb working fine!');
 });
 
 module.exports = router;

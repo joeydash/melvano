@@ -31,8 +31,7 @@ app.use('/managedb', managedb);
 app.use(function(req, res, next) {
   var err = new Error('Page Not Found');
   err.status = 404;
- res.render('404');
-  /*next(err)*/
+  next(err)
 });
 
 // error handler

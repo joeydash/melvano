@@ -23,7 +23,7 @@ router.get('/:id', function(req, res, next) {
         userData.findOne({userName : req.params.id}).select({name : 1, email : 1, _id : 0}).then(function (doc,err) {
         if (err){
             console.log(err);
-            res.send("Error in server!");
+            res.json([{errorCode : "1084",error : "Network Or Server Error"},{errorCode : "1083",error : "Body didn't matched check documentation"}]);
         }else{
             if (doc){
                 res.render('users',doc );
@@ -35,10 +35,11 @@ router.get('/:id', function(req, res, next) {
     });
 });
 router.post('/readUser', function(req, res, next) {
+    console.log(req.body);
     if((req.body.userName && req.body.password)||(req.body.email && req.body.password))
     userData.findOne(req.body).then(function (doc,err) {
         if (err){
-            res.send("Error in server!");
+            res.json([{errorCode : "1084",error : "Network Or Server Error"},{errorCode : "1083",error : "Body didn't matched check documentation"}]);
             console.log(err);
         }else{
             res.json(doc);
@@ -50,7 +51,7 @@ router.post('/createUser', function(req, res, next) {
     var data = new userData(req.body);
     data.save(function (err, result) {
         if (err){
-            res.send("Error in server!");
+            res.json([{errorCode : "1084",error : "Network Or Server Error"},{errorCode : "1083",error : "Body didn't matched check documentation"}]);
             console.log(err);
         }else{
             res.json(result);
@@ -63,13 +64,13 @@ router.post('/updateUserImageUrl', function(req, res, next) {
     if (req.body.id && req.body.imageUrl){
         userData.findOne({_id : req.body.id}).then(function (doc,err) {
             if (err){
-                res.send("Error in server!");
+                res.json([{errorCode : "1084",error : "Network Or Server Error"},{errorCode : "1083",error : "Body didn't matched check documentation"}]);
                 console.log(err);
             }else{
                 doc.imageUrl = req.body.imageUrl;
                 doc.save(function (err,result) {
                     if (err){
-                        res.send("Error in server!");
+                        res.json([{errorCode : "1084",error : "Network Or Server Error"},{errorCode : "1083",error : "Body didn't matched check documentation"}]);
                         console.log(err);
                     }else{
                         res.json(result);
@@ -88,7 +89,7 @@ router.post('/deleteUser', function(req, res, next) {
     if (req.body.id){
         userData.findOneAndRemove({_id : req.body.id}).exec(function (err, result) {
             if (err){
-                res.send("Server Error!");
+                res.json([{errorCode : "1084",error : "Network Or Server Error"},{errorCode : "1083",error : "Body didn't matched check documentation"}]);
                 console.log(err)
             }else{
                 res.json(result);

@@ -35,6 +35,7 @@ router.get('/:id', function(req, res, next) {
     });
 });
 router.post('/readUser', function(req, res, next) {
+    if((req.body.userName && req.body.password)||(req.body.email && req.body.password))
     userData.findOne(req.body).then(function (doc,err) {
         if (err){
             res.send("Error in server!");
@@ -43,6 +44,7 @@ router.post('/readUser', function(req, res, next) {
             res.json(doc);
         }
     });
+    else res.json({errorCode : "1083",error : "Body didn't matched check documentation"})
 });
 router.post('/createUser', function(req, res, next) {
     var data = new userData(req.body);

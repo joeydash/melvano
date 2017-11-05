@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-var url = "mongodb://manager:joeydash@ds155674.mlab.com:55674/joeydash";
+var url = "mongodb://manager:melvano@ds157614.mlab.com:57614/melvano";
 mongoose.connect(url, { useMongoClient: true });
 var Schema = mongoose.Schema;
 

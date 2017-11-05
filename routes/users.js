@@ -18,6 +18,9 @@ var userDataSchema = new Schema({
     imageUrl : {type :String , default : "https://cad.onshape.com/images/placeholder-user.png"}
 },{collection : "melvanoUsers"});
 var userData = mongoose.model('melvanoUsers',userDataSchema);
+router.get('/', function(req, res, next) {
+    res.send("You are someone I can't identify.........Try to go to melvano.com/users/<username>")
+});
 
 router.get('/:id', function(req, res, next) {
         userData.findOne({userName : req.params.id}).select({name : 1, email : 1, _id : 0}).then(function (doc,err) {
